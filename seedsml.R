@@ -1,6 +1,3 @@
-
-
-
 library(readr)  
 library(dplyr)  
 library(plyr) 
@@ -11,7 +8,7 @@ sparkR.session(appName = "seedsml")
 
 
 
-url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt"
+url <- "https://storage.googleapis.com/seeds-sparkr/seeds_dataset.txt"
   
 df <-  
   read.delim(url, sep="")
