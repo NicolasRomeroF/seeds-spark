@@ -122,4 +122,33 @@ Luego, se deben instalar las siguientes librerías para R.
 - SparkR
 
 ### Spark
-Al utilziar Spark en R, se configura automáticamente un entorno en un nodo de Spark. Sin embargo, al utilizarlo en los servicio de Google Cloud, se usa un cluster de 3 nodos (un master y 2 worker)
+
+Al utilizar Spark en R, se configura automáticamente un entorno con un nodo de Spark. Sin embargo, en nuestro proyecto utilizamos el servicio Google Cloud con un cluster de 3 nodos (1 master y 2 worker).
+
+![alt image](https://i.ibb.co/znMw2TQ/imagen.png "Cluster")
+![alt image](https://i.ibb.co/LzTRfL6/imagen.png "Instancias VM")
+
+Alternativamente se deja una carpeta con un archivo docker-compose que permite configurar un entorno Spark en Docker con un nodo master y dos worker (obtenido desde: https://medium.com/@_seraph1/como-correr-apache-spark-desde-una-imagen-docker-88f62c676b2f)
+
+### Funcionamiento
+
+En la consola de R:
+
+#### Paso 1:
+Cambiar el directorio de trabajo a donde esta el script
+```sh
+setwd("/dir/donde/esta/script/")
+```
+
+#### Paso 2:
+Cargar la libreria plumber
+```sh
+library(plumber)
+```
+
+#### Paso 2:
+Correr el archivo, este mostrara la API en el puerto 4104 (puede ser cambiado).
+```sh
+plumb(file='seedsml.R')$run(host="0.0.0.0", port=4104)
+```
+
