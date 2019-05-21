@@ -54,11 +54,15 @@ Se accede mediante la ruta /predict con método post
 Para ejemplificar el uso de la API, se utiliza swagger:
 
 Funcionalidad predicted:
+![alt image](https://i.ibb.co/9tGTkg9/Captura-de-pantalla-de-2019-05-21-00-39-26.png "Ejemplo predicted")
 
-Test: ![alt image](https://ibb.co/Kwmqphj)
+Funcionalidad predict:
+![alt image](https://i.ibb.co/qRhQdTN/Captura-de-pantalla-de-2019-05-21-01-08-13.png "Ejemplo predict")
 
+Clusters del servidor:
+![alt image](https://i.ibb.co/234x9hN/Captura-de-pantalla-de-2019-05-21-00-57-14.png "N° clusters")
 
-El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debeal alto overhead que sufre la solución dado un dataset pequeño y muchos nodos. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente.
+El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debe al alto overhead que sufre la solución dado un dataset pequeño y muchos nodos. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente.
 
 ## Acceso a producción
 
