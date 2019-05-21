@@ -55,7 +55,7 @@ Para ejemplificar el uso de la API, se utiliza swagger:
 
 Funcionalidad predicted:
 
-Test: ![alt image](https://ibb.co/Kwmqphj "Ejemplo swagger")
+Test: ![alt image](https://ibb.co/Kwmqphj)
 
 
 El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debeal alto overhead que sufre la solución dado un dataset pequeño y muchos nodos. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente.
