@@ -45,5 +45,15 @@ Funcionalidad que permite realizar una consulta con valores por defecto:
 Se accede mediante la ruta /predicted con método get
 
 2.- Predict
+
 Funcionalidad que permite predecir la clase de una nueva semilla. Se deben entregar los parámetros indicados anteriormente.
 Se accede mediante la ruta /predict con método post
+
+## Resultados
+Inserte imagenes
+
+## Acceso a producción
+
+Inserte link de acceso
+
+## Desplegar servicio
