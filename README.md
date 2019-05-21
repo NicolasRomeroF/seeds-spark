@@ -1,8 +1,8 @@
 # Machine Learning con Spark R (utilizando Google Cloud Platform)
 ## Integrantes:
-1.- Nicolás Romero
-2.- Richard Torti
-3.- Franco Leal
+- Nicolás Romero
+- Richard Torti
+- Franco Leal
 
 ## Descripción del problema
 El objetivo del Laboratorio N°2 consiste en entrenar un modelo de Machine Learning utilizando el lenguaje R en conjunto con Spark, utilizando una base de datos distribuida en los servidores de Google Cloud Platform. Además, se debe disponibilizar un servicio para consultar el modelo.
@@ -32,6 +32,7 @@ Uno de los principales inconvenientes es la instalación propiamentetal del ento
 ### Funcionalidades principales
 
 1.- Predicted
+
 Funcionalidad que permite realizar una consulta con valores por defecto:
 - area: 14.88
 - perimeter: 14.57
@@ -40,7 +41,9 @@ Funcionalidad que permite realizar una consulta con valores por defecto:
 - widthk (ancho del núcleo): 3.333
 - asymmetry: 1.0180
 - lengthkg (largo de la ranura del núcleo): 4.596
+
 Se accede mediante la ruta /predicted con método get
+
 2.- Predict
 Funcionalidad que permite predecir la clase de una nueva semilla. Se deben entregar los parámetros indicados anteriormente.
 Se accede mediante la ruta /predict con método post
