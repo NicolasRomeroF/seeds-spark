@@ -14,14 +14,14 @@ Las semillas pueden ser de 3 tipos:
 - Rosa
 - Canadian
 
-Los parámetros que se desfinen en el dataset son los siguientes:
-- area
-- perimeter
-- compactness
-- lengthk (largo del núcleo)
-- widthk (ancho del núcleo)
-- asymmetry
-- lengthkg (largo de la ranura del núcleo)
+Los parámetros que se definen en el dataset son los siguientes:
+- area (Área)
+- perimeter (Perímetro)
+- compactness (Compacidad)
+- lengthk (Length kernel - largo del núcleo)
+- widthk (Width kernel - ancho del núcleo)
+- asymmetry (Asimetría)
+- lengthkg (Length of kernel groove - largo de la ranura del núcleo)
 
 ## Desarrollo de la actividad
 
