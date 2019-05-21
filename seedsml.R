@@ -6,12 +6,15 @@ library(SparkR)
 
 sparkR.session(appName = "seedsml")
 
+op <- options(digits.secs = 6)
+options(op)
 
-
+t1 <- Sys.time()
   url <- "https://storage.googleapis.com/seeds-sparkr/seeds_dataset.txt"
   
 df <-  
   read.delim(url, sep="")
+
 df <- dplyr::mutate(df, id = as.integer(rownames(df)))
 colnames(df) <- c("area", "perimeter", "compactness", "lengthk" ,"widthk", "asymmetry", "lengthkg", "class", "id")
 # 
@@ -26,6 +29,14 @@ df <- dplyr::mutate(df, id = as.integer(rownames(df)))
 test_ddf <- except(ddf, training_ddf)
 model <- spark.randomForest(training_ddf, class ~ ., type="classification", seed=seed)
 summary(model)
+t2 <- Sys.time()
+
+show("Tiempo inicial")
+show(t1)
+show("Tiempo final")
+show(t2)
+show("Delta de tiempo")
+show(t2-t1)
 
 
 predictions <- predict(model, test_ddf)  
@@ -46,7 +57,7 @@ function(){
   list(precision = acc)
 }
 
-#* Echo back the input
+#* Clasifica individuo definido por defecto
 #* @get /predicted
 function(){
   l <- list(a = list(area = 14.88, perimeter =	14.57, compactness =	0.8811, lengthk =	5.554, widthk =	3.333, asymmetry =	1.0180, lengthkg =	4.956))
@@ -58,6 +69,7 @@ function(){
   predictions <- predict(model, test)
   prediction_df <- collect(select(predictions, "id", "prediction"))
 }
+#* Clasifica un nuevo individuo
 #* @param area
 #* @param perimeter 
 #* @param compactness 
