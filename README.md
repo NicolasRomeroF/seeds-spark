@@ -57,3 +57,50 @@ Inserte imagenes
 Inserte link de acceso
 
 ## Desplegar servicio
+
+Para desplegar el servicio, se requieren los siguientes softwares:
+
+### R
+Para instalar R se deben seguir los siguientes pasos (en la terminal):
+#### Paso 1:
+Agregar GPG key:
+```sh
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+```
+#### Paso 2:
+Agregar respositorio
+
+```sh
+$ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+```
+
+#### Paso 3:
+Actualizar índice
+
+```sh
+$ sudo apt update
+```
+
+#### Paso 4:
+Instalar R
+
+
+```sh
+$ sudo apt install r-base
+```
+
+#### Paso 5:
+Verificar instalación accediendo a la cosola de R:
+```sh
+$ sudo -i R
+```
+
+Luego, se deben instalar las siguientes librerías para R.
+- readr  
+- dplyr  
+- plyr 
+- plumber
+- SparkR
+
+### Spark
+Inserte instalación de spark
