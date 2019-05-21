@@ -50,11 +50,19 @@ Funcionalidad que permite predecir la clase de una nueva semilla. Se deben entre
 Se accede mediante la ruta /predict con método post
 
 ## Resultados
-Inserte imagenes
+
+Para ejemplificar el uso de la API, se utiliza swagger:
+
+Funcionalidad predicted:
+
+Test: ![alt image](https://ibb.co/Kwmqphj "Ejemplo swagger")
+
+
+El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debeal alto overhead que sufre la solución dado un dataset pequeño y muchos nodos. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente.
 
 ## Acceso a producción
 
-Inserte link de acceso
+Se puede acceder al servidor de la solución [aquí](http://35.247.217.37:4104/).
 
 ## Desplegar servicio
 
@@ -103,4 +111,4 @@ Luego, se deben instalar las siguientes librerías para R.
 - SparkR
 
 ### Spark
-Inserte instalación de spark
+Al utilziar Spark en R, se configura automáticamente un entorno en un nodo de Spark. Sin embargo, al utilizarlo en los servicio de Google Cloud, se usa un cluster de 3 nodos (un master y 2 worker)
