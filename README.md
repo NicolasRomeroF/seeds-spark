@@ -23,6 +23,8 @@ Los parámetros que se definen en el dataset son los siguientes:
 - asymmetry (Asimetría)
 - lengthkg (Length of kernel groove - largo de la ranura del núcleo)
 
+El método de clasificación usado para entrenar el modelo fue el de Random forest (Bosques aleatorios) que opera construyendo arboles de decisión en base un vector aleatorio, de esta forma se corrige el hábito de sobre ajustamiento de  los árboles de decisión.
+
 ## Desarrollo de la actividad
 
 ### Inconvenientes
@@ -42,12 +44,17 @@ Funcionalidad que permite realizar una consulta con valores por defecto:
 - asymmetry: 1.0180
 - lengthkg (largo de la ranura del núcleo): 4.596
 
-Se accede mediante la ruta /predicted con método get
+Se accede mediante la ruta /predicted con método GET.
 
 2.- Predict
 
 Funcionalidad que permite predecir la clase de una nueva semilla. Se deben entregar los parámetros indicados anteriormente.
-Se accede mediante la ruta /predict con método post
+Se accede mediante la ruta /predict con método POST.
+
+3.- Info
+
+Funcionalidad que entrega la precision del modelo entrenado. Se accede mediante la ruta /info con metodo POST.
+La precision del modelo es de 96.78%
 
 ## Resultados
 
