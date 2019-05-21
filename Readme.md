@@ -1,8 +1,8 @@
 # Machine Learning con Spark R (utilizando Google Cloud Platform)
 ## Integrantes:
-1.- Nicolás Romero
-2.- Richard Torti
-3.- Franco Leal
+- Nicolás Romero
+- Richard Torti
+- Franco Leal
 
 ## Descripción del problema
 El objetivo del Laboratorio N°2 consiste en entrenar un modelo de Machine Learning utilizando el lenguaje R en conjunto con Spark, utilizando una base de datos distribuida en los servidores de Google Cloud Platform. Además, se debe disponibilizar un servicio para consultar el modelo.
@@ -32,6 +32,7 @@ Uno de los principales inconvenientes es la instalación propiamentetal del ento
 ### Funcionalidades principales
 
 1.- Predicted
+
 Funcionalidad que permite realizar una consulta con valores por defecto:
 - area: 14.88
 - perimeter: 14.57
@@ -40,8 +41,79 @@ Funcionalidad que permite realizar una consulta con valores por defecto:
 - widthk (ancho del núcleo): 3.333
 - asymmetry: 1.0180
 - lengthkg (largo de la ranura del núcleo): 4.596
+
 Se accede mediante la ruta /predicted con método get
+
 2.- Predict
+
 Funcionalidad que permite predecir la clase de una nueva semilla. Se deben entregar los parámetros indicados anteriormente.
 Se accede mediante la ruta /predict con método post
 
+## Resultados
+
+Para ejemplificar el uso de la API, se utiliza swagger:
+
+Funcionalidad predicted:
+![alt image](https://i.ibb.co/9tGTkg9/Captura-de-pantalla-de-2019-05-21-00-39-26.png "Ejemplo predicted")
+
+Funcionalidad predict:
+![alt image](https://i.ibb.co/z5cYJGw/Captura-de-pantalla-de-2019-05-21-01-17-32.png "Ejemplo predict")
+![alt image](https://i.ibb.co/ySQ0NVp/Captura-de-pantalla-de-2019-05-21-01-17-00.png "Ejemplo predict")
+
+Clusters del servidor:
+![alt image](https://i.ibb.co/234x9hN/Captura-de-pantalla-de-2019-05-21-00-57-14.png "N° clusters")
+
+El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debe al alto overhead que sufre la solución dado un dataset pequeño y muchos nodos. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente.
+
+## Acceso a producción
+
+Se puede acceder al servidor de la solución [aquí](http://35.247.217.37:4104/).
+
+## Desplegar servicio
+
+Para desplegar el servicio, se requieren los siguientes softwares:
+
+### R
+Para instalar R se deben seguir los siguientes pasos (en la terminal):
+#### Paso 1:
+Agregar GPG key:
+```sh
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+```
+#### Paso 2:
+Agregar respositorio
+
+```sh
+$ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+```
+
+#### Paso 3:
+Actualizar índice
+
+```sh
+$ sudo apt update
+```
+
+#### Paso 4:
+Instalar R
+
+
+```sh
+$ sudo apt install r-base
+```
+
+#### Paso 5:
+Verificar instalación accediendo a la cosola de R:
+```sh
+$ sudo -i R
+```
+
+Luego, se deben instalar las siguientes librerías para R.
+- readr  
+- dplyr  
+- plyr 
+- plumber
+- SparkR
+
+### Spark
+Al utilziar Spark en R, se configura automáticamente un entorno en un nodo de Spark. Sin embargo, al utilizarlo en los servicio de Google Cloud, se usa un cluster de 3 nodos (un master y 2 worker)
