@@ -8,14 +8,14 @@ sparkR.session(appName = "seedsml")
 
 
 
-url <- "https://storage.googleapis.com/seeds-sparkr/seeds_dataset.txt"
+  url <- "https://storage.googleapis.com/seeds-sparkr/seeds_dataset.txt"
   
 df <-  
   read.delim(url, sep="")
 df <- dplyr::mutate(df, id = as.integer(rownames(df)))
 colnames(df) <- c("area", "perimeter", "compactness", "lengthk" ,"widthk", "asymmetry", "lengthkg", "class", "id")
-
-df <- dplyr::select(df,-id)
+# 
+df <- dplyr::mutate(df, id = as.integer(rownames(df)))
 
 # 
 
@@ -27,26 +27,23 @@ test_ddf <- except(ddf, training_ddf)
 model <- spark.randomForest(training_ddf, class ~ ., type="classification", seed=seed)
 summary(model)
 
-# r <- plumb("script.R")
-# r$run(host="127.0.0.1",port=4104,swagger=TRUE)
 
+predictions <- predict(model, test_ddf)  
+prediction_df <- collect(select(predictions, "id", "prediction"))
 
+actual_vs_predicted <-
+  dplyr::inner_join(df, prediction_df, "id") %>%
+  dplyr::select(id, actual = class, predicted = prediction)
+
+actualvpred = mean(actual_vs_predicted$actual == actual_vs_predicted$predicted)
+
+tablePred = table(actual_vs_predicted$actual, actual_vs_predicted$predicted)
 
 # 
-# actual_vs_predicted <-    
-#   dplyr::inner_join(df, prediction_df, "id") %>%  
-#   dplyr::select(id, actual = taste, predicted = prediction)
-# 
-# mean(actual_vs_predicted$actual == actual_vs_predicted$predicted)
-# 
-# tablePred = table(actual_vs_predicted$actual, actual_vs_predicted$predicted)
-# 
-# 
-#* Echo back the input
-#* @param msg The message to echo
-#* @get /echo
-function(msg=""){
-  list(msg = paste0("The message is: '", msg, "'"))
+#* @get /info
+function(){
+  acc = actualvpred
+  list(precision = acc)
 }
 
 #* Echo back the input
@@ -86,4 +83,16 @@ function(req, area, perimeter, compactness, lengthk, widthk, asymmetry, lengthkg
   
   predictions <- predict(model, test)
   prediction_df <- collect(select(predictions, "id", "prediction"))
+  pred = prediction_df[1,"prediction"]
+  variety = "Kama"
+  if(pred == 1){
+    variety = "Kama"
+  }
+  if(pred==2){
+    variety = "Rosa"
+  }
+  if(pred == 3){
+    variety = "Canadian"
+  }
+  list(variety=variety)
 }
