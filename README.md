@@ -25,13 +25,13 @@ Los parámetros que se definen en el dataset son los siguientes:
 - asymmetry (Asimetría)
 - lengthkg (Length of kernel groove - largo de la ranura del núcleo)
 
-El método de clasificación usado para entrenar el modelo fue el de Random forest (Bosques aleatorios) que opera construyendo arboles de decisión en base un vector aleatorio, de esta forma se corrige el hábito de sobre ajustamiento de  los árboles de decisión.
+El método de clasificación usado para entrenar el modelo fue el de Random forest (Bosques aleatorios) que opera construyendo arboles de decisión en base un vector aleatorio, de esta forma se corrige el hábito de sobre ajustamiento de los árboles de decisión.
 
 ## Desarrollo de la actividad
 
 ### Inconvenientes
 
-Uno de los principales inconvenientes es la instalación propiamentetal del entorno de ejecución de la solución, para lograr utilizar Spark y posteriormente, montar el servicio para consultar el resultado.
+Uno de los principales inconvenientes es la instalación propiamente tal del entorno de ejecución de la solución, para lograr utilizar Spark y posteriormente, montar el servicio para consultar el resultado.
 
 ### Funcionalidades principales
 
@@ -71,7 +71,7 @@ Funcionalidad predict:
 Clusters del servidor:  
 ![alt image](https://i.ibb.co/234x9hN/Captura-de-pantalla-de-2019-05-21-00-57-14.png "N° clusters")
 
-El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debe al alto overhead que sufre la solución dado un dataset pequeño y muchos nodos. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente.
+El tiempo de respuesta del servidor (3 nodos) para cargar el dataset y entrenar el modelo es de aproximadamente 30 segundos, mientras que en local (1 nodo) demora 4 segundos. Se infiere que esto se debe al alto overhead que sufre la solución dado un dataset pequeño y muchos nodos, ya que en comparación, la comunicación entre nodos es mucho mayor en proporción que la computación de la solución en sí. Sin embargo, si la cantidad de datos creciera, la solución distribuida sería más eficiente, ya que la relación comunicación vs tiempo de procesamiento es ínfima.
 
 ## Acceso a producción
 
