@@ -31,7 +31,7 @@ resource "google_dataproc_cluster" "Cluster1" {
     region     = "us-central1"
 
     cluster_config {
-        staging_bucket        = "ML in seeds"
+        staging_bucket        = "seedsml"
 
         master_config {
             num_instances     = 1
