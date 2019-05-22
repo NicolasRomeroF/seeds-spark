@@ -26,6 +26,8 @@ Los parámetros que se definen en el dataset son los siguientes:
 - asymmetry (Asimetría)
 - lengthkg (Length of kernel groove - largo de la ranura del núcleo)
 
+El método de clasificación usado para entrenar el modelo fue el de Random forest (Bosques aleatorios) que opera construyendo arboles de decisión en base un vector aleatorio, de esta forma se corrige el hábito de sobre ajustamiento de  los árboles de decisión.
+
 ## Desarrollo de la actividad
 
 ### Inconvenientes
@@ -45,12 +47,17 @@ Funcionalidad que permite realizar una consulta con valores por defecto:
 - asymmetry: 1.0180
 - lengthkg (largo de la ranura del núcleo): 4.596
 
-Se accede mediante la ruta /predicted con método get
+Se accede mediante la ruta /predicted con método GET.
 
 2.- Predict
 
 Funcionalidad que permite predecir la clase de una nueva semilla. Se deben entregar los parámetros indicados anteriormente.
-Se accede mediante la ruta /predict con método post
+Se accede mediante la ruta /predict con método POST.
+
+3.- Info
+
+Funcionalidad que entrega la precision del modelo entrenado. Se accede mediante la ruta /info con metodo POST.
+La precision del modelo es de 96.78%
 
 ## Resultados
 
@@ -118,4 +125,33 @@ Luego, se deben instalar las siguientes librerías para R.
 - SparkR
 
 ### Spark
-Al utilziar Spark en R, se configura automáticamente un entorno en un nodo de Spark. Sin embargo, al utilizarlo en los servicio de Google Cloud, se usa un cluster de 3 nodos (un master y 2 worker)
+
+Al utilizar Spark en R, se configura automáticamente un entorno con un nodo de Spark. Sin embargo, en nuestro proyecto utilizamos el servicio Google Cloud con un cluster de 3 nodos (1 master y 2 worker).
+
+![alt image](https://i.ibb.co/znMw2TQ/imagen.png "Cluster")
+![alt image](https://i.ibb.co/LzTRfL6/imagen.png "Instancias VM")
+
+Alternativamente se deja una carpeta con un archivo docker-compose que permite configurar un entorno Spark en Docker con un nodo master y dos worker (obtenido desde: https://medium.com/@_seraph1/como-correr-apache-spark-desde-una-imagen-docker-88f62c676b2f)
+
+### Funcionamiento
+
+En la consola de R:
+
+#### Paso 1:
+Cambiar el directorio de trabajo a donde esta el script
+```sh
+setwd("/dir/donde/esta/script/")
+```
+
+#### Paso 2:
+Cargar la libreria plumber
+```sh
+library(plumber)
+```
+
+#### Paso 2:
+Correr el archivo, este mostrara la API en el puerto 4104 (puede ser cambiado).
+```sh
+plumb(file='seedsml.R')$run(host="0.0.0.0", port=4104)
+```
+
