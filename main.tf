@@ -2,40 +2,20 @@
 # Especificacion del proveedor
 provider "google" {
  credentials = "${file("CREDENTIALS_FILE.json")}"
- project     = "seedsml"
+ project     = "terraform-test44"
  region      = "us-west1"
 }
 
-#Crear una nueva instancia
-resource "google_compute_instance" "default" {
- name         = "seedsml"
- machine_type = "n1-standard-1"
- zone         = "us-west1-a"
-
- boot_disk {
-   initialize_params {
-     image = "debian-cloud/debian-9"
-   }
- }
-
-# Hay que asegurarse de que flask esta installado
- metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask"
-
-network_interface {
-   network = "default"
-}
-}
-
 resource "google_dataproc_cluster" "Cluster1" {
-    name       = "Cluster1"
+    name       = "cluster1"
     region     = "us-central1"
 
     cluster_config {
-        staging_bucket        = "ML in seeds"
 
         master_config {
             num_instances     = 1
             machine_type      = "n1-standard-1"
+
             disk_config {
                 boot_disk_type = "pd-ssd"
                 boot_disk_size_gb = 15
