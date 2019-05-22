@@ -8,7 +8,7 @@ provider "google" {
 
 #Crear una nueva instancia
 resource "google_compute_instance" "default" {
- name         = "seedsML-R-Spark"
+ name         = "seedsml"
  machine_type = "n1-standard-4"
  zone         = "us-west1-a"
 
