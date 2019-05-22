@@ -116,7 +116,10 @@ Verificar instalación accediendo a la cosola de R:
 $ sudo -i R
 ```
 
-Luego, se deben instalar las siguientes librerías para R.
+Luego, se deben instalar las siguientes librerías para R (una vez dentro de R).
+```sh
+$ install.packages("<Nombre de los paquetes>")
+```
 - readr  
 - dplyr  
 - plyr 
