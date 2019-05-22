@@ -139,7 +139,7 @@ En la consola de R:
 #### Paso 1:
 Cambiar el directorio de trabajo a donde esta el script
 ```sh
-setwd("/dir/donde/esta/script/")
+setwd("/<Path del script>/<nombre script>.r")
 ```
 
 #### Paso 2:
