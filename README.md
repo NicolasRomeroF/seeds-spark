@@ -11,8 +11,7 @@ Por lo tanto, el problema a resolver corresponde a cómo diferenciar las distint
 Ante esto, se elabora el laboratorio N°2 el cual consiste en entrenar un modelo de Machine Learning utilizando el lenguaje R en conjunto con Spark, utilizando una base de datos distribuida en los servidores de Google Cloud Platform. Además, se debe disponibilizar un servicio API para consultar el modelo.
 
 ## Enfoque de la solución
-Para dar solución al problema planteado, se utiliza un dataset de semillas, el cual se utiliza para predecir la clase de nuevos sujetos.
-Las semillas pueden ser de 3 tipos:
+Para dar solución al problema planteado, se utiliza un dataset de semillas, el cual se utiliza para predecir la clase de nuevas semillas segun su forma geométrica. Estas semillas pueden ser de 3 tipos:
 - Kama
 - Rosa
 - Canadian
