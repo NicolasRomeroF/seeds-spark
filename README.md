@@ -128,7 +128,7 @@ $ install.packages("<Nombre del paquete>")
 
 ### Spark
 
-Al utilizar Spark en R, se configura automáticamente un entorno con un nodo de Spark. Sin embargo, en nuestro proyecto utilizamos el servicio Google Cloud con un cluster de 3 nodos (1 master y 2 worker).
+Al utilizar Spark en R, se configura automáticamente un entorno con un nodo de Spark. Sin embargo, en nuestro proyecto utilizamos el servicio Google Cloud con un cluster de 3 nodos (1 master y 2 worker). Se deja adjunto archivo Terraform para crear automaticamente un cluster en Google Cloud Dataproc, previamente se debe obtener un archivo JSON con las credenciales de la cuenta de Google Cloud y guardarlas en la misma carpeta del script con el nombre "CREDENTIALS_FILE.json". Ademas se deben tener activadas la API de Google Dataproc en el proyecto.
 
 ![alt image](https://i.ibb.co/znMw2TQ/imagen.png "Cluster")
 ![alt image](https://i.ibb.co/LzTRfL6/imagen.png "Instancias VM")
