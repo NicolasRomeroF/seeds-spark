@@ -5,7 +5,10 @@
 - Franco Leal
 
 ## Descripción del problema
-El objetivo del Laboratorio N°2 consiste en entrenar un modelo de Machine Learning utilizando el lenguaje R en conjunto con Spark, utilizando una base de datos distribuida en los servidores de Google Cloud Platform. Además, se debe disponibilizar un servicio para consultar el modelo.
+El trigo es un cereal ampliamente aceptado en la dieta humana y es, de hecho, el cereal más cultivado. Naturalmente, existen diferentes variedades de trigo, los cuáles poseen propiedades nutricionales divergentes y, por tanto, su uso es recomendado en diferentes preparaciones.
+Es por ello que en el Instituto de Agropecuario de la Academia Polaca de Lublin, se dedican a cultivar diferentes variedades de trigo e investigan qué características geométricas son las que mejor describen a las semillas.
+Por lo tanto, el problema a resolver corresponde a cómo diferenciar las distintas variedades de tipos de grano de trigo en base a las medidas propuestas por el Instituto. 
+Ante esto, se elabora el laboratorio N°2 el cual consiste en entrenar un modelo de Machine Learning utilizando el lenguaje R en conjunto con Spark, utilizando una base de datos distribuida en los servidores de Google Cloud Platform. Además, se debe disponibilizar un servicio API para consultar el modelo.
 
 ## Enfoque de la solución
 Para dar solución al problema planteado, se utiliza un dataset de semillas, el cual se utiliza para predecir la clase de nuevos sujetos.
